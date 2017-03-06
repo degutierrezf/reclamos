@@ -79,7 +79,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Grilla de Tickets Pendientes - Valles del Biobío -</h3>
+            <h3 class="box-title">Grilla de Tickets Pendientes - Ruta del Limarí -</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

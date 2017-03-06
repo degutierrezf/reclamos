@@ -79,7 +79,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Grilla de Tickets Pendientes - Valles del Biobío -</h3>
+            <h3 class="box-title">Grilla de Tickets Pendientes - Ruta del Algarrobo -</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -88,16 +88,16 @@
                 <tr>
                     <th>ID</th>
                     <th>Acciones</th>
-                    <th>Fecha Apertura</th>
+                    <th>Fecha Ingreso</th>
                     <th>Tipo Ticket</th>
                     <th>Nombre / Fono</th>
                     <th>Días desde apertura</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php
-                foreach ($complaints as $c){ ?>
-                <tr>
+                    <?php
+                    foreach ($complaints as $c){ ?>
+                    <tr>
                     <td>{{ $c->id_complaints }}</td>
                     <td>
                         <div class="btn-group">
@@ -118,8 +118,8 @@
                     <td> {{ $c->type_contact }}  </td>
                     <td> {{ $c->name_person }} - {{ $c->phone }}  </td>
                     <td> {{ $c->fecha }}</td>
-                </tr>
-                <?php } ?>
+                    </tr>
+                    <?php } ?>
                 </tbody>
                 <tfoot>
                 <tr>

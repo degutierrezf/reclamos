@@ -7,8 +7,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Access;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 /**
  * Class HomeController
@@ -33,6 +36,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('adminlte::home');
+
+        $ac = Access::getAccesos();
+
+        return view('adminlte::home', ['access'=>$ac]);
     }
 }
