@@ -20,7 +20,21 @@ class ComplaintsController extends Controller
         return view('home', ['access' => $ac]);
     }
 
-    public function guardar(){
+    public function fichas()
+    {
+
+        $id_complaints = $_POST['id_comp'];
+
+        $ac = Access::getAccesos();
+        $complaints = Complaint::join('concession', 'idconcession', '=', 'concession_idconcession')
+            ->where('id_complaints', $id_complaints)
+            ->first();
+
+        return view('Fichas.index', ['access' => $ac, 'fc' => $complaints]);
+    }
+
+    public function guardar()
+    {
 
         $var1 = $_POST['optionsRadios'];
         $var2 = $_POST['rut'];
@@ -37,6 +51,7 @@ class ComplaintsController extends Controller
         $var13 = $_POST['concession'];;
 
         DB::table('complaints')->insert([
+            'created_at' => date('Y-m-d H:i:s'),
             'type_contact' => $var1,
             'rut_person' => $var2,
             'name_person' => $var3,

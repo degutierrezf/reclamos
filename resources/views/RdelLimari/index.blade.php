@@ -88,10 +88,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Acciones</th>
-                    <th>Fecha Apertura</th>
+                    <th>Fecha Ingreso</th>
                     <th>Tipo Ticket</th>
                     <th>Nombre / Fono</th>
-                    <th>Días desde apertura</th>
+                    <th>Asunto</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -101,7 +101,9 @@
                     <td>{{ $c->id_complaints }}</td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" class="btn-xs btn-success dropdown-toggle"  data-toggle="dropdown"><i class="fa fa-cog"></i> Menú </button>
+                            <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown"><i
+                                        class="fa fa-cog"></i> Menú
+                            </button>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Responder</a></li>
@@ -110,14 +112,19 @@
                             </ul>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn-xs btn-danger dropdown-toggle"  data-toggle="dropdown"><i class="fa fa-file"></i> Ver Ficha </button>
-                            </button>
+                            <form action="{{ url('/Fichas') }}" role="form" method="POST">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="id_comp" value="<?php echo $c->id_complaints?>">
+                                <button type="submit" class="btn-xs btn-danger">
+                                    <i class="fa fa-file"></i> Ver Ficha
+                                </button>
+                            </form>
                         </div>
                     </td>
                     <td> {{ $c->created_at }}  </td>
                     <td> {{ $c->type_contact }}  </td>
                     <td> {{ $c->name_person }} - {{ $c->phone }}  </td>
-                    <td> {{ $c->fecha }}</td>
+                    <td> {{ $c->subject }}</td>
                 </tr>
                 <?php } ?>
                 </tbody>
@@ -128,7 +135,7 @@
                     <th>Fecha Apertura</th>
                     <th>Tipo Ticket</th>
                     <th>Nombre / Fono</th>
-                    <th>Días desde apertura</th>
+                    <th>Asunto</th>
                 </tr>
                 </tfoot>
             </table>

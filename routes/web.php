@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('vendor.adminlte.auth.login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/Tickets/ajPqZqzAYd', 'ComplaintsController@ajPqZqzAYd');
     Route::get('/Tickets/qPRxTCuQpe', 'ComplaintsController@qPRxTCuQpe');
     Route::get('/Tickets/J5apvq8zq', 'ComplaintsController@J5apvq8zq');
+    Route::post('/Enviar', 'ComplaintsController@guardar');
+    Route::post('/Fichas', 'ComplaintsController@fichas');
 
 });
 
@@ -31,4 +33,4 @@ Route::get('/Tickets/RdelAlgarrobo', 'ComplaintsController@RdelAlgarrobo');
 Route::get('/Tickets/VdelDesierto', 'ComplaintsController@VdelDesierto');
 Route::get('/Tickets/RdelLimari', 'ComplaintsController@RdelLimari');
 Route::get('/Tickets/RdelDesierto', 'ComplaintsController@RdelDesierto');
-Route::post('/Enviar', 'ComplaintsController@guardar');
+

@@ -2,8 +2,8 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-        <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. {{ trans('adminlte_lang::message.descriptionpackage') }}
+        <a href="http://www.consultorait.cl"><b>Desarrolla:</b></a> Consultora Gutiérrez & Gutiérrez Ltda.</a>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="http://acacha.org">SAOPSE Chile</a>.</strong>
+    <strong>Registrado &copy; 2017 <a href="http://www.saopse.cl">SAOPSE Chile</a>.</strong>
 </footer>
