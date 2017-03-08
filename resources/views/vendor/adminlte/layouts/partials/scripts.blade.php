@@ -6,6 +6,8 @@
 <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
 <script src="https://almsaeedstudio.com/themes/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="https://almsaeedstudio.com/themes/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/js/jquery.table2excel.js"></script>
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
@@ -28,5 +30,16 @@
             "info": true,
             "autoWidth": false
         });
+    });
+</script>
+
+<script>
+    $("#btnExport").click(function (e) {
+        $("#example1").table2excel({
+            exclude: ".noExl",
+            name: "Tickets",
+            filename: "GrillaVallesBiobio"
+        });
+
     });
 </script>

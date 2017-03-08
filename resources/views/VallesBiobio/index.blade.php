@@ -79,63 +79,74 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Grilla de Tickets Pendientes - Valles del Biobío -</h3>
+            <h3 class="box-title">Grilla de Tickets Pendientes - Ruta Valles del Biobío -</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Acciones</th>
-                    <th>Fecha Apertura</th>
-                    <th>Tipo Ticket</th>
-                    <th>Nombre / Fono</th>
-                    <th>Días desde apertura</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($complaints as $c){ ?>
-                <tr>
-                    <td>{{ $c->id_complaints }}</td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn-xs btn-success dropdown-toggle"  data-toggle="dropdown"><i class="fa fa-cog"></i> Menú </button>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Responder</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Ver Documentos</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn-xs btn-danger dropdown-toggle"  data-toggle="dropdown"><i class="fa fa-file"></i> Ver Ficha </button>
-                            </button>
-                        </div>
-                    </td>
-                    <td> {{ $c->created_at }}  </td>
-                    <td> {{ $c->type_contact }}  </td>
-                    <td> {{ $c->name_person }} - {{ $c->phone }}  </td>
-                    <td> {{ $c->fecha }}</td>
-                </tr>
-                <?php } ?>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Acciones</th>
-                    <th>Fecha Apertura</th>
-                    <th>Tipo Ticket</th>
-                    <th>Nombre / Fono</th>
-                    <th>Días desde apertura</th>
-                </tr>
-                </tfoot>
-            </table>
+            <input type="button" id="btnExport" value="Exportar tabla a Excel"/>
+            <hr>
+            <div id="dvData">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th class="noExl">Acciones</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Tipo Ticket</th>
+                        <th>Nombre / Fono</th>
+                        <th>Asunto</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbodys">
+                    <?php
+                    foreach ($complaints as $c){ ?>
+                    <tr>
+                        <td>{{ $c->id_complaints }}</td>
+                        <td class="noExl">
+                            <div class="btn-group">
+                                <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown">
+                                    <i
+                                            class="fa fa-cog"></i> Menú
+                                </button>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Responder</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Ver Documentos</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <form action="{{ url('/Fichas') }}" role="form" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="id_comp" value="<?php echo $c->id_complaints?>">
+                                    <button type="submit" class="btn-xs btn-danger">
+                                        <i class="fa fa-file"></i> Ver Ficha
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                        <td> {{ $c->created_at }}  </td>
+                        <td> {{ $c->type_contact }}  </td>
+                        <td> {{ $c->name_person }} - {{ $c->phone }}  </td>
+                        <td> {{ $c->subject }}</td>
+                    </tr>
+                    <?php } ?>
+                    </tbody>
+                    <tfoot>
+                    <tr class="noExl">
+                        <th>ID</th>
+                        <th class="noExl">Acciones</th>
+                        <th>Fecha Apertura</th>
+                        <th>Tipo Ticket</th>
+                        <th>Nombre / Fono</th>
+                        <th>Asunto</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
         <!-- /.box-body -->
     </div>
 
     <hr>
-
 @endsection

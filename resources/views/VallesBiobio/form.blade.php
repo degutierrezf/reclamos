@@ -185,7 +185,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                                     <button type="submit" class="btn btn-primary pull-right">Enviar Solicitud</button>
                                 </div>
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="hidden" name="concession" value="5">
+                                <input type="hidden" name="concession" value="1">
                 </form>
 
 
